@@ -1,0 +1,159 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2821
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww14260\viewh15480\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 # Web Application Vulnerability Scan Report\
+\
+**Tool Used:** OWASP ZAP  \
+**Date of Scan:** [2025-05-28]  \
+**Scanned By:** DINNIE - DMZ Group \
+**Target Application:** [https://hrsystem.iium.edu.my/apar-admin/login/]  \
+**Scan Type:** [Active]  \
+**Scan Duration:** [Start Time \'96 End Time]\
+\
+---\
+\
+## 1. Executive Summary\
+\
+| Metric                         | Value            |\
+|-------------------------------|------------------|\
+| Total Issues Identified       | 19 |\
+| Critical Issues               | 0          |\
+| High-Risk Issues              | 0          |\
+| Medium-Risk Issues            | 2         |\
+| Low-Risk/Informational Issues | 0          |\
+| Remediation Status            | In Progress |\
+\
+**Key Takeaway:**  \
+\pard\pardeftab720\partightenfactor0
+\cf0 \expnd0\expndtw0\kerning0
+The scan identified 2 medium-risk vulnerabilities: Cross-Domain Misconfiguration and Missing Anti-Clickjacking Header. No critical or high-risk issues were found.\kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+---\
+\
+## 2. Summary of Findings\
+\
+| Risk Level | Number of Issues | Example Vulnerability          |\
+|------------|------------------|--------------------------------|\
+| Critical   | 0          |   |\
+| High       | 0          |        |\
+| Medium     | 2         |  \expnd0\expndtw0\kerning0
+Cross-Domain Misconfiguration and Missing Anti-Clickjacking Header\kerning1\expnd0\expndtw0     |\
+| Low        | 0          |  |\
+| Info       | 0          | |\
+\
+---\
+\
+## 3. Detailed Findings\
+\
+### Cross-Domain Misconfiguration\
+\
+- **Severity:** Medium\
+- **Description:**  \
+ \expnd0\expndtw0\kerning0
+The application is misconfigured to allow cross-origin resource sharing (CORS) from arbitrary domains. This can allow unauthorized scripts on other sites to access sensitive information through your application\'92s API.\kerning1\expnd0\expndtw0 \
+\
+- **Affected URLs:**  \
+ \expnd0\expndtw0\kerning0
+https://hrsystem.iium.edu.my/apar-admin/login\kerning1\expnd0\expndtw0 \
+\
+- **Business Impact:**  \
+  \expnd0\expndtw0\kerning0
+May allow unauthorized third-party domains to make authenticated API requests, potentially leading to data leakage or session hijacking.\kerning1\expnd0\expndtw0 \
+\
+- **OWASP Reference:**  \
+  {\field{\*\fldinst{HYPERLINK "https://owasp.org/www-community/attacks/CORS_OriginHeaderScrutiny"}}{\fldrslt https://owasp.org/www-community/attacks/CORS_OriginHeaderScrutiny}}\
+\
+- **Recommendation:**  \
+  \expnd0\expndtw0\kerning0
+Restrict CORS headers to trusted domains only. Avoid using wildcards (
+\fs26 *
+\fs24 ) in 
+\fs26 Access-Control-Allow-Origin
+\fs24 .\kerning1\expnd0\expndtw0 \
+\
+- **Prevention Strategy:**  \
+  - Validate origin headers\
+  - Do not allow CORS unless absolutely required\
+  - Implement strict domain whitelisting\
+\
+> **Responsible Team:** DevOPS\
+> **Target Remediation Date:** 2025-06-05\
+\
+---\
+\
+###  Missing Anti-Clickjacking Header\
+\
+- **Severity:** Medium\
+- **Description:**  \
+\pard\pardeftab720\partightenfactor0
+\cf0 \expnd0\expndtw0\kerning0
+The server response lacks the 
+\fs26 X-Frame-Options
+\fs24  or 
+\fs26 Content-Security-Policy
+\fs24  frame-ancestors directive, making it possible for the page to be embedded in an iframe, which can be exploited for clickjacking.\kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+- **Affected URLs:**  \
+ \expnd0\expndtw0\kerning0
+https://hrsystem.iium.edu.my/apar-admin/login\kerning1\expnd0\expndtw0 \
+\
+- **Business Impact:**  \
+\pard\pardeftab720\partightenfactor0
+\cf0 \expnd0\expndtw0\kerning0
+Users may be tricked into clicking on concealed UI elements controlled by a malicious website (clickjacking attack), leading to unintended actions such as data submission.\
+\kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 - **OWASP Reference:**  \
+ {\field{\*\fldinst{HYPERLINK "https://owasp.org/www-community/attacks/Clickjacking"}}{\fldrslt https://owasp.org/www-community/attacks/Clickjacking}}\
+\
+- **Recommendation:**  \
+\pard\pardeftab720\partightenfactor0
+\cf0 \expnd0\expndtw0\kerning0
+Add 
+\fs26 X-Frame-Options: DENY
+\fs24  or use 
+\fs26 Content-Security-Policy: frame-ancestors 'none'
+\fs24 .\kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+- **Prevention Strategy:**  \
+  - Set HTTP response header to deny iframe embedding\
+  - Test to ensure header policies do not disrupt legitimate functionality\
+\
+> **Responsible Team:** BackEnd Team\
+> **Target Remediation Date:** 2025-06-05\
+\
+---\
+\
+## 4. Recommendations & Next Steps\
+\
+- Address the Medium vulnerabilities immediately\
+- Re-test application after applying CORS and header security policies\
+- Implement a CSP policy that includes frame-ancestors\
+- Conduct code-level security reviews and automate header testing\
+- Run monthly Zap scans or after major updates\
+\
+---\
+\
+## Appendix (Optional)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic zap_report.html \width640 \height640 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+Zap report for  \expnd0\expndtw0\kerning0
+https://hrsystem.iium.edu.my/apar-admin/login\kerning1\expnd0\expndtw0 \
+\
+---\
+\
+**Prepared by:**  \
+Muhammad Dinnie Haiqal bin Muhammad Salman\
+Student of Bachelor of Information Technology\
+dinnie.haiqal@live.iium.edu.my\
+2025-05-27}

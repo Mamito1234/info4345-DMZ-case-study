@@ -1,0 +1,110 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2821
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\froman\fcharset0 TimesNewRomanPSMT;}
+{\colortbl;\red255\green255\blue255;\red70\green120\blue134;}
+{\*\expandedcolortbl;;\csgenericrgb\c27451\c47059\c52549;}
+{\info
+{\author Zaed Hakimi}}\paperw11900\paperh16840\margl1440\margr1440\vieww11900\viewh15480\viewkind1
+\deftab720
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+
+\f0\fs24 \cf0 \expnd0\expndtw0\kerning0
+# Web Application Vulnerability Scan Report\
+\
+**Tool Used:** OWASP ZAP  \
+**Date of Scan:** 2025-05-08  \
+**Scanned By:** AHMAD ZAED - DMZ Group \
+**Target Application:** http://iattach.iium.edu.my/  \
+**Scan Type:** Active \
+**Scan Duration:** Not Specified\
+\
+---\
+\
+## 1. Executive Summary\
+\
+| Metric                         | Value            |\
+|-------------------------------|------------------|\
+| Total Issues Identified       | [19    |\
+| Critical Issues               | 0          |\
+| High-Risk Issues              | 0          |\
+| Medium-Risk Issues            | 4          |\
+| Low-Risk/Informational Issues | 15          |\
+| Remediation Status            | In Progress |\
+\
+**Key Takeaway:**  \
+The scan identified several medium-risk vulnerabilities and numerous informational issues that need to be addressed.\
+---\
+\
+## 2. Summary of Findings\
+\
+| Risk Level | Number of Issues | Example Vulnerability          |\
+|------------|------------------|--------------------------------|\
+| Critical   | [Count]          | None  |\
+| High       | [Count]          | None          |\
+| Medium     | 4          | Content Security Policy (CSP) Header Not Set       |\
+| Low        | 9          | Missing Anti-clickjacking Header   |\
+| Info       | 6          | Server Leaks Information via "X-Powered-By" HTTP Header |\
+\
+---\
+\
+## 3. Detailed Findings\
+\
+### Content Security Policy (CSP) Header Not Set\
+\
+- **Severity:** Medium  \
+- **Description:**  \
+  CSP headers mitigate cross-site scripting (XSS) and data injection attacks. The target application did not implement a CSP header.\
+\
+- **Affected URLs:**  \
+  - \cf2 \ul \ulc2 https://hrsystem.iium.edu.my/apar-user/\cf0 \ulnone \
+\
+- **Business Impact:**  \
+  Without a CSP, the application is vulnerable to XSS attacks, which could compromise sensitive data and application integrity.\
+\
+- **OWASP Reference:**  \
+  {\field{\*\fldinst{HYPERLINK "https://owasp.org/Top10/A05_2021-Security_Misconfiguration/%22%20%5Ct%20%22_new"}}{\fldrslt \cf2 \ul OWASP A05-2021}}\
+\
+- **Recommendation:**  \
+  Implement a CSP header with a strict policy.\
+\
+- **Prevention Strategy:**  \
+  - Apply a CSP header in the HTTP response.\
+  - Regularly review security headers.\
+  - Perform ongoing vulnerability testing.\
+\
+> **Responsible Team:** Security Team  \
+> **Target Remediation Date:** 2025-06-01\
+\
+---\
+\
+(Repeat for each major vulnerability)\
+\
+---\
+\
+## 4. Recommendations & Next Steps\
+\
+- Prioritize remediation for medium-risk issues.\
+- Set up regular scans to track ongoing vulnerabilities.\
+- Integrate secure coding practices and header security as part of the CI/CD pipeline.\
+\
+---\
+\
+## Appendix (Optional)\
+\
+- Scan configuration details  \
+- List of all scanned URLs  \
+- Full technical findings :\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \kerning1\expnd0\expndtw0 Zap report for  \expnd0\expndtw0\kerning0
+http://iattach.iium.edu.my/ : {{\NeXTGraphic 2025-05-08-ZAP-Report-.html \width640 \height640 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\partightenfactor0
+\cf0 \
+---\
+\
+**Prepared by:**  \
+AHMAD ZAED  \
+Student of KICT  \
+azaedhakimi03@gmail.com  \
+2025-05-08
+\f1 \kerning1\expnd0\expndtw0 \
+}

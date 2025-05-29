@@ -1,0 +1,225 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2821
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\froman\fcharset0 Times-Roman;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww9840\viewh15080\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 # Web Application Vulnerability Scan Report\
+\
+**Tool Used:** OWASP ZAP 2.16.1 \
+**Date of Scan:** [2025-MM-29]  \
+**Scanned By:** MOCTAR - DMZ Group \
+**Target Application:** [\expnd0\expndtw0\kerning0
+https://hrsystem.iium.edu.my/apar-user/\kerning1\expnd0\expndtw0 ]  \
+**Scan Type:** [Active]\
+**Scan Duration:** [\expnd0\expndtw0\kerning0
+Not Specified\kerning1\expnd0\expndtw0 ]\
+\
+---\
+\
+## 1. Executive Summary\
+\
+| Metric                         | Value            |\
+|-------------------------------|------------------|\
+| Total Issues Identified       | [14]    |\
+| Critical Issues               | [0]          |\
+| High-Risk Issues              | [0]          |\
+| Medium-Risk Issues            | [3]          |\
+| Low-Risk/Informational Issues | [0]          |\
+| Remediation Status            | [Pending] |\
+\
+**Key Takeaway:**  \
+[\expnd0\expndtw0\kerning0
+The scan identified 3 medium-risk issues, 6 low-risk vulnerabilities, and 5 informational alerts. No critical or high-risk vulnerabilities were found. Immediate attention is recommended for the medium-risk issues.\kerning1\expnd0\expndtw0 ]\
+\
+---\
+\
+## 2. Summary of Findings\
+\
+| Risk Level | Number of Issues | Example Vulnerability          |\
+|------------|------------------|--------------------------------|\
+| Critical   | [0]          | [\expnd0\expndtw0\kerning0
+N/A\kerning1\expnd0\expndtw0 ]  |\
+| High       | [0]          | [\expnd0\expndtw0\kerning0
+N/A\kerning1\expnd0\expndtw0 ]          |\
+| Medium     | [3]          | [\expnd0\expndtw0\kerning0
+Missing Anti-clickjacking Header\kerning1\expnd0\expndtw0 ]       |\
+| Low        | [0]          | [\expnd0\expndtw0\kerning0
+N/A\kerning1\expnd0\expndtw0 ]   |\
+| Info       | [0]          | [\expnd0\expndtw0\kerning0
+N/A\kerning1\expnd0\expndtw0 ] |\
+\
+---\
+\
+## 3. Detailed Findings\
+\
+### 
+\f1\b\fs28 \expnd0\expndtw0\kerning0
+Content Security Policy (CSP) Header Not Set
+\f0\b0\fs24 \kerning1\expnd0\expndtw0 \
+\
+- **Severity:** Medium\
+- **Description:**  \
+  \expnd0\expndtw0\kerning0
+CSP helps mitigate XSS and data injection attacks. The server does not return this header.\kerning1\expnd0\expndtw0 \
+\
+- **Affected URLs:**  \
+  - \expnd0\expndtw0\kerning0
+https://hrsystem.iium.edu.my/apar-user/\kerning1\expnd0\expndtw0 (#)\
+  - \expnd0\expndtw0\kerning0
+https://hrsystem.iium.edu.my/sitemap.xml\kerning1\expnd0\expndtw0 (#)\
+\
+- **Business Impact:**  \
+  \expnd0\expndtw0\kerning0
+Higher risk of client-side attacks.\kerning1\expnd0\expndtw0 \
+\
+- **OWASP Reference:**  \
+  \expnd0\expndtw0\kerning0
+https://owasp.org/www-project-top-ten/\kerning1\expnd0\expndtw0 (#)\
+\
+- **Recommendation:**  \
+  \expnd0\expndtw0\kerning0
+Set the 
+\fs26 Content-Security-Policy
+\fs24  header to allow only trusted content sources.\kerning1\expnd0\expndtw0 \
+\
+- **Prevention Strategy:**  \
+  - \expnd0\expndtw0\kerning0
+Use CSP headers.\kerning1\expnd0\expndtw0 \
+  - \expnd0\expndtw0\kerning0
+Avoid inline scripts.\kerning1\expnd0\expndtw0 \
+  - \expnd0\expndtw0\kerning0
+Implement regular header audits.\kerning1\expnd0\expndtw0 \
+\
+> **Responsible Team:** DevOps  \
+> **Target Remediation Date:** 2025-06-15\
+\
+---\
+\
+### 
+\f1\b\fs28 \expnd0\expndtw0\kerning0
+Cross-Domain Misconfiguration
+\f0\b0\fs24 \kerning1\expnd0\expndtw0 \
+\
+- **Severity:** \expnd0\expndtw0\kerning0
+Medium\kerning1\expnd0\expndtw0 \
+- **Description:**  \
+  \expnd0\expndtw0\kerning0
+CORS policy allows requests from any origin (
+\fs26 *
+\fs24 ).\kerning1\expnd0\expndtw0 \
+\
+- **Affected URLs:**  \
+  - \expnd0\expndtw0\kerning0
+https://hrsystem.iium.edu.my/apar-dev/apar-backend/hr-admin/public/api\kerning1\expnd0\expndtw0 (#)\
+\
+- **Business Impact:**  \
+  \expnd0\expndtw0\kerning0
+Allows cross-domain data exposure in public APIs.\kerning1\expnd0\expndtw0 \
+\
+- **OWASP Reference:**  \
+  \expnd0\expndtw0\kerning0
+https://owasp.org/www-project-top-ten/\kerning1\expnd0\expndtw0 (#)\
+\
+- **Recommendation:**  \
+  \expnd0\expndtw0\kerning0
+Restrict 
+\fs26 Access-Control-Allow-Origin
+\fs24  to trusted domains only.\kerning1\expnd0\expndtw0 \
+\
+- **Prevention Strategy:**  \
+  - \expnd0\expndtw0\kerning0
+Configure secure CORS settings.\kerning1\expnd0\expndtw0 \
+  - \expnd0\expndtw0\kerning0
+Avoid using wildcards in sensitive endpoints.\kerning1\expnd0\expndtw0 \
+\
+> **Responsible Team:** \expnd0\expndtw0\kerning0
+Backend/API Team\kerning1\expnd0\expndtw0  \
+> **Target Remediation Date:** 2025-06-15\
+\
+---\
+\
+### 
+\f1\b\fs28 \expnd0\expndtw0\kerning0
+Missing Anti-clickjacking Header
+\f0\b0\fs24 \kerning1\expnd0\expndtw0 \
+\
+- **Severity:** \expnd0\expndtw0\kerning0
+Medium\kerning1\expnd0\expndtw0 \
+- **Description:**  \
+  
+\fs26 \expnd0\expndtw0\kerning0
+X-Frame-Options
+\fs24  or CSP 
+\fs26 frame-ancestors
+\fs24  header is missing.\kerning1\expnd0\expndtw0 \
+\
+- **Affected URLs:**  \
+  - \expnd0\expndtw0\kerning0
+https://owasp.org/www-project-top-ten/\kerning1\expnd0\expndtw0 (#)\
+\
+- **Business Impact:**  \
+  \expnd0\expndtw0\kerning0
+Can be exploited for clickjacking attacks.\kerning1\expnd0\expndtw0 \
+\
+- **OWASP Reference:**  \
+  \expnd0\expndtw0\kerning0
+https://owasp.org/www-project-top-ten/\kerning1\expnd0\expndtw0 (#)\
+\
+- **Recommendation:**  \
+  \expnd0\expndtw0\kerning0
+Restrict 
+\fs26 Access-Control-Allow-Origin
+\fs24  to trusted domains only.\kerning1\expnd0\expndtw0 \
+\
+- **Prevention Strategy:**  \
+  - \expnd0\expndtw0\kerning0
+Always use secure framing policies.\kerning1\expnd0\expndtw0 \
+\
+> **Responsible Team:** \expnd0\expndtw0\kerning0
+Frontend Team\kerning1\expnd0\expndtw0  \
+> **Target Remediation Date:** 2025-06-15\
+\
+---\
+\
+## 4. Recommendations & Next Steps\
+\
+- Address **Medium** \expnd0\expndtw0\kerning0
+severity vulnerabilities immediately.\kerning1\expnd0\expndtw0 \
+- \expnd0\expndtw0\kerning0
+Implement security headers like CSP, X-Frame-Options, and HSTS.\kerning1\expnd0\expndtw0 \
+- Re-scan \expnd0\expndtw0\kerning0
+after fixes are applied.\kerning1\expnd0\expndtw0 \
+- \expnd0\expndtw0\kerning0
+Integrate secure development practices and regular vulnerability assessments.\kerning1\expnd0\expndtw0 \
+- Consider a penetration test for in-depth analysis.\
+\
+---\
+\
+## Appendix (Optional)\
+\
+- Scan configuration: 
+\f2 \expnd0\expndtw0\kerning0
+Passive scan using OWASP ZAP 2.16.1
+\f0 \kerning1\expnd0\expndtw0  \
+- List of all scanned URLs: 
+\f2 \expnd0\expndtw0\kerning0
+Included in the ZAP report.
+\f0 \kerning1\expnd0\expndtw0 \
+- Full technical findings: 
+\f2 \expnd0\expndtw0\kerning0
+See original HTML report for plugin references, CWE/WASC IDs, and affected endpoints.\
+- 
+\f0 \kerning1\expnd0\expndtw0 Zap report for  \expnd0\expndtw0\kerning0
+https://hrsystem.iium.edu.my/apar-user/: \kerning1\expnd0\expndtw0 {{\NeXTGraphic zap_report.html \width640 \height640 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+\
+---\
+\
+**Prepared by:** \
+KEHMESS EL MOCTAR \
+[Your Role / Department]  \
+moctarkehmess@gmail.com \
+2025-05-28}
