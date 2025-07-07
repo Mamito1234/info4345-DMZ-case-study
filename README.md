@@ -164,10 +164,10 @@ Make sure this code is executed before any HTML output begins.
 * **Tool Used:** OWASP ZAP 2.16.1 (Active Scanning)
 * **Individual Reports:**
 
-  * [Moctar Report](./Moctar.rtfd)
-  * [Dinnie Report](./Dinnie.rtfd)
-  * [Zaed Report](./Zaed.rtfd)
-* **Full ZAP HTML Report:** [zap\_report.html](./zap_report.html)
+  * **Moctar Report** (file:///Users/elmoctarkehmess/Downloads/zap_report%20(1).html)
+  * **Dinnie Report** ()
+  * **Zaed Report** ()
+
 * **References:**
 
   * [https://owasp.org/www-project-top-ten/](https://owasp.org/www-project-top-ten/)
