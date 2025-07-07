@@ -170,9 +170,9 @@ X-Powered-By: removed
 
 ### Individual Reports:
 
-* **Moctar Report** [file:///Users/elmoctarkehmess/Downloads/zap_report%20(1).html](file:///Users/elmoctarkehmess/Downloads/zap_report%20(1).html)
-* **Dinnie Report**
-* **Zaed Report**
+* **Moctar Report** [https://drive.google.com/drive/folders/1QHFb-aX7gpbdtr1lZRog9clKT2wk456v?usp=drive_link](https://drive.google.com/drive/folders/1QHFb-aX7gpbdtr1lZRog9clKT2wk456v?usp=drive_link)
+* **Dinnie Report** [https://drive.google.com/drive/folders/16qWBoeCVHQXBIrpyj9VW29JAy5Ho5uvX?usp=drive_link](https://drive.google.com/drive/folders/16qWBoeCVHQXBIrpyj9VW29JAy5Ho5uvX?usp=drive_link)
+* **Zaed Report**   [https://drive.google.com/drive/folders/1lCcipmMYGEQDLiVxjtt6c8Gyg5t9Coud?usp=drive_link](https://drive.google.com/drive/folders/1lCcipmMYGEQDLiVxjtt6c8Gyg5t9Coud?usp=drive_link)
 
 ### References:
 
