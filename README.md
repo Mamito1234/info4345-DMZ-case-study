@@ -170,7 +170,7 @@ X-Powered-By: removed
 
 ### Individual Reports:
 
-* **Moctar Report** [](file:///Users/elmoctarkehmess/Downloads/zap_report%20(1).html)
+* **Moctar Report** [file:///Users/elmoctarkehmess/Downloads/zap_report%20(1).html](file:///Users/elmoctarkehmess/Downloads/zap_report%20(1).html)
 * **Dinnie Report**
 * **Zaed Report**
 
