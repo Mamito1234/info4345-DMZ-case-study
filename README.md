@@ -6,9 +6,9 @@
 
 | Name                                 | Matric Number | Role & Task Description                                                                 |
 |--------------------------------------|---------------|------------------------------------------------------------------------------------------|
-| KEHMESS EL MOCTAR                    | 2113559       | Analyzed `apar-user`, handled CSP, clickjacking, and CORS misconfig.                    |
-| Muhammad Dinnie Haiqal bin M. Salman| 2124291       | Scanned `apar-admin/login`, handled clickjacking & CORS issues.                         |
-| AHMAD ZAED HAKIMI BIN ROSLI ALLANI  | 2217059       | Scanned `iattach`, focused on missing headers, CSP, and info leak vulnerabilities.      |
+| KEHMESS EL MOCTAR                    | 2113559       | Analyzed `https://hrsystem.iium.edu.my/apar-user/`, handled CSP, clickjacking, and CORS misconfig.                    |
+| Muhammad Dinnie Haiqal bin M. Salman| 2124291       | Scanned `https://hrsystem.iium.edu.my/apar-admin/login/`, handled clickjacking & CORS issues.                         |
+| AHMAD ZAED HAKIMI BIN ROSLI ALLANI  | 2217059       | Scanned `http://iattach.iium.edu.my/`, focused on missing headers, CSP, and info leak vulnerabilities.      |
 
 ---
 
