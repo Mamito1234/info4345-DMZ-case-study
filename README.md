@@ -1,4 +1,4 @@
-````markdown
+
 # INFO 4345 Web Application Security Case Study
 
 ## Group Name: DMZ
